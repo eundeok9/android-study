@@ -25,28 +25,23 @@ import javax.inject.Provider
 class MainActivity : ComponentActivity() {
 
     @Inject
-    lateinit var str: Set<String>
-
-
-    @Inject
-    lateinit var map: Map<Animal, String>
-
-
+    lateinit var myDialog: MyDialog
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        setContent {
-            AndroidPracticeTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    Greeting(map[Animal.CAT].orEmpty())
-                }
-            }
-        }
+        myDialog.show()
+//        setContent {
+//            AndroidPracticeTheme {
+//                // A surface container using the 'background' color from the theme
+//                Surface(
+//                    modifier = Modifier.fillMaxSize(),
+//                    color = MaterialTheme.colorScheme.background
+//                ) {
+//                    Greeting("eunseo")
+//                }
+//            }
+//        }
     }
 }
 

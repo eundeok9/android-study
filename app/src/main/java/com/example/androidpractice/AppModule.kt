@@ -15,43 +15,4 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object AppModule {
 
-    @Provides
-    @IntoSet
-    fun provideOneString(): String{
-        return "ABC"
-    }
-
-    @Provides
-    @ElementsIntoSet
-    fun provideMultipleString(): Set<String> {
-        return listOf<String>("DEF", "GHI").toSet()
-    }
-
-    @Provides
-    @IntoMap
-    @IntKey(100)
-    fun provideIntString(): String{
-        return "백점"
-    }
-
-    @Provides
-    @IntoMap
-    @IntKey(90)
-    fun provideIntString2(): String{
-        return "구십점"
-    }
-
-    @Provides
-    @IntoMap
-    @AnimalKey(Animal.DOG)
-    fun provideDog(): String {
-        return "멍멍이"
-    }
-
-    @Provides
-    @IntoMap
-    @AnimalKey(Animal.CAT)
-    fun provideCat(): String {
-        return "야옹이"
-    }
 }

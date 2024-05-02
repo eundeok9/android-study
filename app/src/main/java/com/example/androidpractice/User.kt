@@ -1,4 +1,4 @@
 package com.example.androidpractice
 
-class FooManager {
+class User(val name: String) {
 }
