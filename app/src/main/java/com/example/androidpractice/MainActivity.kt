@@ -27,6 +27,12 @@ class MainActivity : ComponentActivity() {
     @Inject
     lateinit var str: Set<String>
 
+
+    @Inject
+    lateinit var map: Map<Animal, String>
+
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -37,7 +43,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    Greeting("${str.toString()}")
+                    Greeting(map[Animal.CAT].orEmpty())
                 }
             }
         }
