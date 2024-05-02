@@ -5,6 +5,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import dagger.multibindings.IntoSet
 import javax.inject.Singleton
 
 @Module
@@ -12,8 +13,9 @@ import javax.inject.Singleton
 object AppModule {
 
     @Provides
-    fun provideFoo(): Foo{
-        return Foo()
+    @IntoSet
+    fun provideOneString(): String{
+        return "ABC"
     }
 
 }

@@ -25,14 +25,10 @@ import javax.inject.Provider
 class MainActivity : ComponentActivity() {
 
     @Inject
-    lateinit var optionalFoo: Optional<Foo>
+    lateinit var str: Set<String>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        assert(optionalFoo != null)
-        Log.e("MainActivity", "isPresent = ${optionalFoo.isPresent}")
-        Log.e("MainActivity", "foo = ${optionalFoo.get()}")
 
         setContent {
             AndroidPracticeTheme {
@@ -41,7 +37,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    Greeting("eundeok")
+                    Greeting("${str.toString()}")
                 }
             }
         }
