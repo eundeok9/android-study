@@ -26,14 +26,16 @@ class MainActivity : ComponentActivity() {
     lateinit var app: Application
 
     @Inject
-    lateinit var lazyFoo: Lazy<Foo>
+    lateinit var lazyFoo1: Lazy<Foo>
+
+    @Inject
+    lateinit var lazyFoo2: Lazy<Foo>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        assert(this::lazyFoo.isInitialized)
-        val foo:Foo = lazyFoo.get()
-        val foo2:Foo = lazyFoo.get()
-        assert(foo === foo2) // 생성되는 foo가 동일한지 확인
+
+        assert(lazyFoo1 !== lazyFoo2) // scope를 지정할 경우 같은 인스턴스가 생성됨
+
         setContent {
             AndroidPracticeTheme {
                 // A surface container using the 'background' color from the theme
