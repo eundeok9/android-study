@@ -1,19 +1,14 @@
 package com.example.androidpractice
 
-import android.util.Log
+import dagger.BindsOptionalOf
 import dagger.Module
-import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object AppModule {
+abstract class FooModule {
 
-    @Provides
-    fun provideFoo(): Foo{
-        return Foo()
-    }
-
+    @BindsOptionalOf
+    abstract fun obtinalFoo(): Foo
 }

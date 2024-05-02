@@ -17,6 +17,7 @@ import com.example.androidpractice.ui.theme.AndroidPracticeTheme
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 import dagger.Lazy
+import java.util.Optional
 import javax.inject.Provider
 
 // MainActivity 진입점 설정
@@ -24,12 +25,14 @@ import javax.inject.Provider
 class MainActivity : ComponentActivity() {
 
     @Inject
-    lateinit var car: Car
+    lateinit var optionalFoo: Optional<Foo>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        Log.e("MainActivity", "엔진타입: ${car.engine}")
+        assert(optionalFoo != null)
+        Log.e("MainActivity", "isPresent = ${optionalFoo.isPresent}")
+        Log.e("MainActivity", "foo = ${optionalFoo.get()}")
 
         setContent {
             AndroidPracticeTheme {
