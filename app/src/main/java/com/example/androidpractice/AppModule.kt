@@ -11,11 +11,4 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object AppModule {
 
-    @Provides
-    @Singleton
-    fun provideMyName(): MyName{
-        // App과 MainActivity에서 동일한 uuid 가 호출됨
-        Log.e("AppModule", "provideMyName 호출")
-        return MyName()
-    }
 }
