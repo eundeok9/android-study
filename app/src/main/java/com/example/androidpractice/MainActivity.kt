@@ -24,22 +24,12 @@ import javax.inject.Provider
 class MainActivity : ComponentActivity() {
 
     @Inject
-    lateinit var app: Application
-
-    @Inject
-    lateinit var providerFoo1: Provider<Foo>
-
-    @Inject
-    lateinit var providerFoo2: Provider<Foo>
+    lateinit var car: Car
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // scope가 지정되지 않았을 때 다른 인스턴스가 생성됨
-        val foo1 = providerFoo1.get()
-        val foo2 = providerFoo2.get()
-
-        assert(foo1 !== foo2)
+        Log.e("MainActivity", "엔진타입: ${car.engine}")
 
         setContent {
             AndroidPracticeTheme {
