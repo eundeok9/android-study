@@ -17,6 +17,7 @@ import com.example.androidpractice.ui.theme.AndroidPracticeTheme
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 import dagger.Lazy
+import javax.inject.Provider
 
 // MainActivity 진입점 설정
 @AndroidEntryPoint
@@ -26,15 +27,19 @@ class MainActivity : ComponentActivity() {
     lateinit var app: Application
 
     @Inject
-    lateinit var lazyFoo1: Lazy<Foo>
+    lateinit var providerFoo1: Provider<Foo>
 
     @Inject
-    lateinit var lazyFoo2: Lazy<Foo>
+    lateinit var providerFoo2: Provider<Foo>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        assert(lazyFoo1 !== lazyFoo2) // scope를 지정할 경우 같은 인스턴스가 생성됨
+        // scope가 지정되지 않았을 때 다른 인스턴스가 생성됨
+        val foo1 = providerFoo1.get()
+        val foo2 = providerFoo2.get()
+
+        assert(foo1 !== foo2)
 
         setContent {
             AndroidPracticeTheme {
